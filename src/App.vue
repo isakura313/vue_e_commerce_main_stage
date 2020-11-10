@@ -1,15 +1,28 @@
 <template>
+  <div class="wrapper">
   <div class="columns">
-    <h1> Магазин электронной коммерции </h1>
+    <div class="column">
+      <h1 class="title is-size-3 has-text-centered" v-text="title"> </h1>
+    </div>
+   </div>
+    <Card />
   </div>
 
 </template>
 
 <script>
+import Card from './components/Card.vue';
 
 export default {
   name: 'App',
-  components: {},
+  components: {
+    Card,
+  },
+  data() {
+    return {
+      title: 'Магазин электронной коммерции',
+    };
+  },
 };
 </script>
 
