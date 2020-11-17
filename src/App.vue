@@ -12,8 +12,9 @@
 </template>
 
 <script>
+import products from './fixtures_books.json';
 import Card from './components/Card.vue';
-import Header from './components/Header.vue';
+import Header from './layouts/Header.vue';
 
 export default {
   name: 'App',
@@ -23,6 +24,7 @@ export default {
   },
   data() {
     return {
+      products,
       title: 'Магазин  e - коммерции',
     };
   },
