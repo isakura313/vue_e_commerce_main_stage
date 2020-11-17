@@ -35,6 +35,7 @@
             <a class="button is-light">
               Корзина
               <ion-icon name="cart-outline" size="large"></ion-icon>
+              {{countOfProducts}}
             </a>
           </div>
         </div>
@@ -47,6 +48,9 @@
 
 export default {
   name: 'Header.vue',
+  props: {
+    countOfProducts: String,
+  },
   data() {
     return {
       logo_src: 'https://cdn1.ozone.ru/s3/cms/8c/t22/ozon_logo_bf.svg',
