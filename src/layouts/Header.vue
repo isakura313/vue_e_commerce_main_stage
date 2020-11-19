@@ -14,13 +14,21 @@
 
     <div id="navbar_ecommerce" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">
+        <div class="navbar-item">
+          <router-link to="/">
+            Главная
+          </router-link>
+        </div>
+        <div class="navbar-item">
+          <router-link to="/books">
           Книги
-        </a>
-
-        <a class="navbar-item">
-          Видеокарты
-        </a>
+          </router-link>
+        </div>
+        <div class="navbar-item">
+          <router-link to="/videocards">
+            Видеокарты
+          </router-link>
+        </div>
       </div>
 
       <div class="navbar-end">
@@ -55,6 +63,11 @@ export default {
     return {
       logo_src: 'https://cdn1.ozone.ru/s3/cms/8c/t22/ozon_logo_bf.svg',
     };
+  },
+  methods: {
+    showVideo() {
+      this.$router.push({ name: 'Video' });
+    },
   },
 };
 </script>
