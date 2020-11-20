@@ -14,13 +14,21 @@
 
     <div id="navbar_ecommerce" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">
+        <div class="navbar-item">
+        <router-link to="/">
+          Главная
+        </router-link>
+        </div>
+        <div class="navbar-item">
+        <router-link to="/books">
           Книги
-        </a>
-
-        <a class="navbar-item">
+        </router-link>
+        </div>
+        <div class="navbar-item">
+        <router-link to="/videocards">
           Видеокарты
-        </a>
+        </router-link>
+        </div>
       </div>
 
       <div class="navbar-end">
@@ -32,11 +40,13 @@
             <a class="button is-primary">
               <strong>Поиск</strong>
             </a>
-            <a class="button is-light">
+            <router-link to="/cart">
+            <button class="button is-light">
               Корзина
               <ion-icon name="cart-outline" size="large"></ion-icon>
               {{countOfProducts}}
-            </a>
+            </button>
+            </router-link>
           </div>
         </div>
       </div>
