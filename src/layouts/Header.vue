@@ -4,7 +4,7 @@
       <a class="navbar-item" href="/">
         <img v-bind:src="logo_src" width="200">
       </a>
-      <a role="button"  @click="showMobileMenu"  aria-label="menu"
+      <a role="button" @click="showMobileMenu" aria-label="menu"
          aria-expanded="false" data-target="navbar_ecommerce"
          v-bind:class="{'is-active': activeMobile }" class="navbar-burger burger">
         <span aria-hidden="true"></span>
@@ -13,25 +13,22 @@
       </a>
     </div>
 
-    <div id="navbar_ecommerce"  v-bind:class="{ 'is-active': activeMobile }" class="navbar-menu">
+    <div id="navbar_ecommerce" v-bind:class="{ 'is-active': activeMobile }" class="navbar-menu">
       <div class="navbar-start">
-        <div class="navbar-item">
-        <router-link :to="{name: 'Home'}">
-          Главная
-        </router-link>
+        <div class="navbar-item is-size-4 has-text-black">
+          <router-link active-class="has-text-black" :to="{name: 'Home'}">
+            Главная
+          </router-link>
         </div>
-        <div class="navbar-item">
-        <router-link :to="{name: 'Books'}">
-          Книги
-        </router-link>
+        <div class="navbar-item is-size-4 ">
+          <router-link :to="{name: 'Books'}">
+            Книги
+          </router-link>
         </div>
-        <div class="navbar-item">
-        <router-link to="/videocards">
-          Видеокарты
-        </router-link>
-          <router-link to="/product/143923030">
-          продукт
-        </router-link>
+        <div class="navbar-item is-size-4 ">
+          <router-link to="/videocards">
+            Видеокарты
+          </router-link>
         </div>
       </div>
 
@@ -45,11 +42,11 @@
               <strong>Поиск</strong>
             </a>
             <router-link to="/cart">
-            <button class="button is-light">
-              Корзина
-              <ion-icon name="cart-outline" size="large"></ion-icon>
-              {{countOfProducts}}
-            </button>
+              <button class="button is-light">
+                Корзина
+                <ion-icon name="cart-outline" size="large"></ion-icon>
+                {{ countOfProducts }}
+              </button>
             </router-link>
           </div>
         </div>

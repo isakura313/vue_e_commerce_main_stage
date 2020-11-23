@@ -7,11 +7,11 @@
           {{
             discount ? `${Math.round((price - newPrice) /
               (price / 100))}%` : ''
-          }}
+          }}info[0]
         </button>
       </div>
       <StarRating
-        increment="0.1"
+        increment=0.1
         read-only="true"
         star-size="20"
         active-color="#ff8970"
@@ -28,7 +28,7 @@
       </p>
       <p class="card__price is-size-5 has-text-weight-bold" v-else>
         {{ price | formatPrice }} </p>
-      <p class="card__available is-size-6"> В наличии {{ available }} </p>
+      <p class="card__available is-size-6-desktop is-size-4-mobile"> В наличии {{ available }} </p>
       <button class="button is-link is-pulled-right"
               v-on:click="addProductToCart" v-if="available"> Добавить в корзину
       </button>
