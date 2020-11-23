@@ -1,11 +1,13 @@
 <template>
-  <div class="column is-one-quarter">
+  <div class="column is-one-quarter-desktop is-full-mobile">
 
     <div class="card">
       <div class="card__img" v-bind:style="{backgroundImage: `url(${image})`}">
         <button class="button is-danger btn_discount" v-show="discount">
-          {{  discount ? `${ Math.round((price - newPrice) /
-          (price / 100)) }%` : '' }}
+          {{
+            discount ? `${Math.round((price - newPrice) /
+              (price / 100))}%` : ''
+          }}
         </button>
       </div>
       <StarRating
@@ -16,12 +18,14 @@
         :show-rating="false"
         :rating="rating"
       />
-      <h3 class="card__title is-size-5"> {{ title | formatTitle }} </h3>
-      <p class="card__description is-size-5" v-text="description"></p>
+      <router-link :to="'/product/' + id">
+        {{ title | formatTitle }}
+      </router-link>
       <p class="card__price is-size-5"
          v-if="discount">
         <span class="has-text-danger has-text-weight-bold">{{ newPrice | formatPrice }} </span>
-        <del class="has-text-grey">{{ price | formatPrice }} </del>  </p>
+        <del class="has-text-grey">{{ price | formatPrice }}</del>
+      </p>
       <p class="card__price is-size-5 has-text-weight-bold" v-else>
         {{ price | formatPrice }} </p>
       <p class="card__available is-size-6"> В наличии {{ available }} </p>
@@ -44,6 +48,7 @@ export default {
     StarRating,
   },
   props: {
+    id: Number,
     image: String,
     rating: Number,
     title: String,
@@ -73,8 +78,8 @@ export default {
       return `${price} ₽`;
     },
     formatTitle(title) {
-      if (title.length > 28) {
-        return `${title.slice(0, 28)}...`;
+      if (title.length > 25) {
+        return `${title.slice(0, 25)}...`;
       }
       return `${title}`;
     },
@@ -119,7 +124,8 @@ export default {
   justify-content: flex-end;
   align-items: flex-start;
 }
-.btn_discount{
+
+.btn_discount {
   width: 45px;
   height: 45px;
 }

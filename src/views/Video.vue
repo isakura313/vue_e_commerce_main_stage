@@ -7,6 +7,7 @@
     </div>
     <div class="columns is-multiline main_wrap">
       <Card v-for='item in info'
+            :id = 'item.id'
             :newPrice = 'item.new_price'
             :key='item.id'
             :image='item.image'
@@ -23,7 +24,7 @@
 </template>
 
 <script>
-import products from '../fixtures_video.json';
+import axios from 'axios';
 import Card from '../components/Card.vue';
 
 export default {
@@ -33,8 +34,8 @@ export default {
   },
   data() {
     return {
-      info: products.products,
-      title: 'Отдел книг',
+      info: '',
+      title: 'Видеокарты по выгодным ценам',
       cart: [],
     };
   },
@@ -48,11 +49,23 @@ export default {
       return this.cart.length;
     },
   },
+  created() {
+    axios
+      .get('/json/full.json')
+      .then((response) => {
+        this.info = response.data.video;
+      });
+  },
 };
 </script>
 
 <style scoped>
 .main_wrap {
   margin: 0 10em;
+}
+@media all and (max-width: 680px){
+  .main_wrap {
+    margin: 0 1em;
+  }
 }
 </style>

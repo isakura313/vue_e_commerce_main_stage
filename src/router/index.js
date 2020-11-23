@@ -15,24 +15,24 @@ const routes = [
     component: Home,
   },
   {
+    path: '/product/:id',
+    name: 'Product',
+    component: Product,
+  },
+  {
     path: '/books',
     name: 'Books',
     component: Books,
   },
   {
     path: '/videocards',
-    name: 'video',
+    name: 'Video',
     component: Video,
   },
   {
     path: '/cart',
     name: 'Cart',
     component: Cart,
-  },
-  {
-    path: '/product',
-    name: 'Product',
-    component: Product,
   },
 ];
 
