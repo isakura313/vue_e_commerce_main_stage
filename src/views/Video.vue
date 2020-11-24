@@ -9,6 +9,7 @@
       <Card v-for='item in info'
             :newPrice = 'item.new_price'
             :key='item.id'
+            :id = 'item.id'
             :image='item.image'
             :rating='item.rating'
             :title='item.title'
@@ -23,7 +24,6 @@
 </template>
 
 <script>
-import products from '../fixtures_video.json';
 import Card from '../components/Card.vue';
 
 export default {
@@ -33,7 +33,7 @@ export default {
   },
   data() {
     return {
-      info: products.products,
+      info: [],
       title: 'Отдел книг',
       cart: [],
     };
@@ -48,11 +48,21 @@ export default {
       return this.cart.length;
     },
   },
+  async created() {
+    const response = await fetch('/json/full.json');
+    this.info = await response.json();
+    this.info = this.info.video;
+  },
 };
 </script>
 
 <style scoped>
 .main_wrap {
   margin: 0 10em;
+}
+@media all and (max-width: 680px){
+  .main_wrap {
+    margin: 0 1em;
+  }
 }
 </style>

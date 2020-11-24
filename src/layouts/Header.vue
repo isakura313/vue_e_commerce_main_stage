@@ -5,29 +5,31 @@
         <img v-bind:src="logo_src" width="200">
       </a>
       <a role="button" class="navbar-burger burger" aria-label="menu"
-         aria-expanded="false" data-target="navbar_ecommerce">
+         aria-expanded="false" data-target="navbar_ecommerce" @click="toggleMobileMenu"
+         v-bind:class="{'is-active': activeMobile}"
+      >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
 
-    <div id="navbar_ecommerce" class="navbar-menu">
+    <div id="navbar_ecommerce" class="navbar-menu" v-bind:class="{'is-active': activeMobile}">
       <div class="navbar-start">
         <div class="navbar-item">
-        <router-link to="/">
-          Главная
-        </router-link>
+          <router-link to="/">
+            Главная
+          </router-link>
         </div>
         <div class="navbar-item">
-        <router-link to="/books">
-          Книги
-        </router-link>
+          <router-link to="/books">
+            Книги
+          </router-link>
         </div>
         <div class="navbar-item">
-        <router-link to="/videocards">
-          Видеокарты
-        </router-link>
+          <router-link to="/videocards">
+            Видеокарты
+          </router-link>
         </div>
       </div>
 
@@ -41,11 +43,11 @@
               <strong>Поиск</strong>
             </a>
             <router-link to="/cart">
-            <button class="button is-light">
-              Корзина
-              <ion-icon name="cart-outline" size="large"></ion-icon>
-              {{countOfProducts}}
-            </button>
+              <button class="button is-light">
+                Корзина
+                <ion-icon name="cart-outline" size="large"></ion-icon>
+                {{ cart.length }}
+              </button>
             </router-link>
           </div>
         </div>
@@ -55,6 +57,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'Header.vue',
@@ -64,7 +67,18 @@ export default {
   data() {
     return {
       logo_src: 'https://cdn1.ozone.ru/s3/cms/8c/t22/ozon_logo_bf.svg',
+      activeMobile: false,
     };
+  },
+  methods: {
+    toggleMobileMenu() {
+      this.activeMobile = !this.activeMobile;
+    },
+  },
+  computed: {
+    ...mapGetters([
+      'cart',
+    ]),
   },
 };
 </script>

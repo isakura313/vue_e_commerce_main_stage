@@ -9,13 +9,14 @@
       <Card v-for='item in info'
             :newPrice = 'item.new_price'
             :key='item.id'
+            :id = 'item.id'
             :image='item.image'
             :rating='item.rating'
             :title='item.title'
             :discount='item.discount'
             :price='item.price'
             :available='item.available'
-            v-on:addToCart='addProduct(item.id)'
+            v-on:addToCart='addProduct(item)'
       />
     </div>
   </div>
@@ -23,7 +24,6 @@
 </template>
 
 <script>
-import products from '../fixtures_books.json';
 import Card from '../components/Card.vue';
 
 export default {
@@ -33,14 +33,14 @@ export default {
   },
   data() {
     return {
-      info: products.products,
+      info: [],
       title: 'Отдел книг',
       cart: [],
     };
   },
   methods: {
-    addProduct(id) {
-      this.cart.push(id);
+    addProduct(item) {
+      this.$store.commit('SET_CART', item);
     },
   },
   computed: {
@@ -48,11 +48,21 @@ export default {
       return this.cart.length;
     },
   },
+  async created() {
+    const response = await fetch('/json/full.json');
+    this.info = await response.json();
+    this.info = this.info.books;
+  },
 };
 </script>
 
 <style scoped>
 .main_wrap {
   margin: 0 10em;
+}
+@media all and (max-width: 680px){
+  .main_wrap {
+    margin: 0 1em;
+  }
 }
 </style>

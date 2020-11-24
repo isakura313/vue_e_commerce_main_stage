@@ -1,11 +1,13 @@
 <template>
-  <div class="column is-one-quarter">
+  <div class="column is-one-quarter-desktop is-full-mobile">
 
     <div class="card">
       <div class="card__img" v-bind:style="{backgroundImage: `url(${image})`}">
         <button class="button is-danger btn_discount" v-show="discount">
-          {{  discount ? `${ Math.round((price - newPrice) /
-          (price / 100)) }%` : '' }}
+          {{
+            discount ? `${Math.round((price - newPrice) /
+              (price / 100))}%` : ''
+          }}
         </button>
       </div>
       <StarRating
@@ -16,17 +18,20 @@
         :show-rating="false"
         :rating="rating"
       />
-      <h3 class="card__title is-size-5"> {{ title | formatTitle }} </h3>
+      <router-link :to="'/product/' + id">
+        <h3 class="card__title is-size-5"> {{ title | formatTitle }} </h3>
+      </router-link>
       <p class="card__description is-size-5" v-text="description"></p>
       <p class="card__price is-size-5"
          v-if="discount">
         <span class="has-text-danger has-text-weight-bold">{{ newPrice | formatPrice }} </span>
-        <del class="has-text-grey">{{ price | formatPrice }} </del>  </p>
+        <del class="has-text-grey">{{ price | formatPrice }}</del>
+      </p>
       <p class="card__price is-size-5 has-text-weight-bold" v-else>
         {{ price | formatPrice }} </p>
       <p class="card__available is-size-6"> В наличии {{ available }} </p>
-      <button class="button is-link is-pulled-right"
-              v-on:click="addProductToCart" v-if="available"> Добавить в корзину
+      <button v-bind:class="addInfoColor"
+              v-on:click.once="addProductToCart" v-if="available"> {{addInfo}}
       </button>
       <button class="button" v-show="canBuy">Нет в наличии</button>
     </div>
@@ -43,7 +48,14 @@ export default {
   components: {
     StarRating,
   },
+  data() {
+    return {
+      addInfo: 'Добавить в корзину',
+      addInfoColor: 'button is-link is-pulled-right',
+    };
+  },
   props: {
+    id: Number,
     image: String,
     rating: Number,
     title: String,
@@ -81,6 +93,8 @@ export default {
   },
   methods: {
     addProductToCart() {
+      this.addInfo = 'В корзине';
+      this.addInfoColor = 'is-danger button is-link is-pulled-right';
       this.$emit('addToCart');
     },
   },
@@ -119,7 +133,8 @@ export default {
   justify-content: flex-end;
   align-items: flex-start;
 }
-.btn_discount{
+
+.btn_discount {
   width: 45px;
   height: 45px;
 }
