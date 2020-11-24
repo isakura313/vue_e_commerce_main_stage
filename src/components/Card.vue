@@ -1,13 +1,12 @@
 <template>
-  <div class="column is-one-quarter-desktop is-full-mobile">
+  <div v-bind:class="[bulma_width]">
 
     <div class="card">
       <div class="card__img" v-bind:style="{backgroundImage: `url(${image})`}">
         <button class="button is-danger btn_discount" v-show="discount">
           {{
-            discount ? `${Math.round((price - newPrice) /
-              (price / 100))}%` : ''
-          }}info[0]
+            `${Math.round((price - newPrice) / (price / 100))} %`
+          }}
         </button>
       </div>
       <StarRating
@@ -29,10 +28,10 @@
       <p class="card__price is-size-5 has-text-weight-bold" v-else>
         {{ price | formatPrice }} </p>
       <p class="card__available is-size-6-desktop is-size-4-mobile"> В наличии {{ available }} </p>
-      <button class="button is-link is-pulled-right"
-              v-on:click="addProductToCart" v-if="available"> Добавить в корзину
+      <button :class="[addInfoColor]"
+              v-on:click.once="addProductToCart" v-if="available"> {{ addInfo }}
       </button>
-      <button class="button" v-show="canBuy">Нет в наличии</button>
+      <button class="button" v-show="canBuy">Товар закончился</button>
     </div>
 
   </div>
@@ -47,6 +46,12 @@ export default {
   components: {
     StarRating,
   },
+  data() {
+    return {
+      addInfo: 'Добавить в корзину',
+      addInfoColor: 'is-link button is-link is-pulled-right',
+    };
+  },
   props: {
     id: Number,
     image: String,
@@ -57,6 +62,7 @@ export default {
     price: Number,
     newPrice: Number,
     available: Number,
+    bulma_width: String,
   },
   filters: {
     formatPrice(price) {
@@ -86,6 +92,8 @@ export default {
   },
   methods: {
     addProductToCart() {
+      this.addInfo = 'Уже в корзине';
+      this.addInfoColor = 'is-danger button is-link is-pulled-right';
       this.$emit('addToCart');
     },
   },

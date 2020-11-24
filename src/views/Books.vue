@@ -16,7 +16,8 @@
             :discount='item.discount'
             :price='item.price'
             :available='item.available'
-            v-on:addToCart='addProduct(item.id)'
+            :bulma_width="bulma_width_class"
+            v-on:addToCart='addProduct(item)'
       />
     </div>
   </div>
@@ -38,11 +39,12 @@ export default {
       info: '',
       title: 'Отдел книг',
       cart: [],
+      bulma_width_class: 'column is-one-quarter-desktop is-full-mobile',
     };
   },
   methods: {
-    addProduct(id) {
-      this.cart.push(id);
+    addProduct(product) {
+      this.cart.push(product);
     },
   },
   computed: {

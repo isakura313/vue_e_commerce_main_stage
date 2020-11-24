@@ -45,7 +45,7 @@
               <button class="button is-light">
                 Корзина
                 <ion-icon name="cart-outline" size="large"></ion-icon>
-                {{ countOfProducts }}
+                {{ cart.length }}
               </button>
             </router-link>
           </div>
@@ -56,8 +56,10 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 
 export default {
+
   name: 'Header.vue',
   props: {
     countOfProducts: String,
@@ -72,6 +74,11 @@ export default {
     showMobileMenu() {
       this.activeMobile = !this.activeMobile;
     },
+  },
+  computed: {
+    ...mapGetters([
+      'cart',
+    ]),
   },
 };
 </script>
