@@ -19,9 +19,14 @@
         :rating="rating"
       />
       <router-link :to="'/product/' + id">
+<<<<<<< HEAD
         <h3 class="card__title is-size-5"> {{ title | formatTitle }} </h3>
       </router-link>
       <p class="card__description is-size-5" v-text="description"></p>
+=======
+        {{ title | formatTitle }}
+      </router-link>
+>>>>>>> 0fd94d3... adas
       <p class="card__price is-size-5"
          v-if="discount">
         <span class="has-text-danger has-text-weight-bold">{{ newPrice | formatPrice }} </span>
@@ -85,8 +90,8 @@ export default {
       return `${price} ₽`;
     },
     formatTitle(title) {
-      if (title.length > 28) {
-        return `${title.slice(0, 28)}...`;
+      if (title.length > 25) {
+        return `${title.slice(0, 25)}...`;
       }
       return `${title}`;
     },

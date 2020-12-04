@@ -2,12 +2,13 @@
   <div class="wrapper">
     <div class="columns">
       <div class="column">
-        <h1 class="title is-size-3 has-text-centered" v-text="title"> </h1>
+        <h1 class="title is-size-3 has-text-centered" v-text="title"></h1>
       </div>
     </div>
     <div class="columns is-multiline main_wrap">
       <Card v-for='item in info'
-            :newPrice = 'item.new_price'
+            :id='item.id'
+            :newPrice='item.new_price'
             :key='item.id'
             :id = 'item.id'
             :image='item.image'
@@ -24,6 +25,11 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+=======
+// import axios from 'axios';
+// import products from '../../public/json/fixtures_books.json';
+>>>>>>> 0fd94d3... adas
 import Card from '../components/Card.vue';
 
 export default {
@@ -33,7 +39,11 @@ export default {
   },
   data() {
     return {
+<<<<<<< HEAD
       info: [],
+=======
+      info: '',
+>>>>>>> 0fd94d3... adas
       title: 'Отдел книг',
       cart: [],
     };
@@ -60,7 +70,12 @@ export default {
 .main_wrap {
   margin: 0 10em;
 }
+<<<<<<< HEAD
 @media all and (max-width: 680px){
+=======
+
+@media all and (max-width: 680px) {
+>>>>>>> 0fd94d3... adas
   .main_wrap {
     margin: 0 1em;
   }

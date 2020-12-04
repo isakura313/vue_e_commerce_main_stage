@@ -4,16 +4,23 @@
       <a class="navbar-item" href="/">
         <img v-bind:src="logo_src" width="200">
       </a>
+<<<<<<< HEAD
       <a role="button" class="navbar-burger burger" aria-label="menu"
          aria-expanded="false" data-target="navbar_ecommerce" @click="toggleMobileMenu"
          v-bind:class="{'is-active': activeMobile}"
       >
+=======
+      <a role="button"  @click="showMobileMenu"  aria-label="menu"
+         aria-expanded="false" data-target="navbar_ecommerce"
+         v-bind:class="{'is-active': activeMobile }" class="navbar-burger burger">
+>>>>>>> 0fd94d3... adas
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
 
+<<<<<<< HEAD
     <div id="navbar_ecommerce" class="navbar-menu" v-bind:class="{'is-active': activeMobile}">
       <div class="navbar-start">
         <div class="navbar-item">
@@ -30,6 +37,27 @@
           <router-link to="/videocards">
             Видеокарты
           </router-link>
+=======
+    <div id="navbar_ecommerce"  v-bind:class="{ 'is-active': activeMobile }" class="navbar-menu">
+      <div class="navbar-start">
+        <div class="navbar-item">
+        <router-link :to="{name: 'Home'}">
+          Главная
+        </router-link>
+        </div>
+        <div class="navbar-item">
+        <router-link :to="{name: 'Books'}">
+          Книги
+        </router-link>
+        </div>
+        <div class="navbar-item">
+        <router-link to="/videocards">
+          Видеокарты
+        </router-link>
+          <router-link to="/product/143923030">
+          продукт
+        </router-link>
+>>>>>>> 0fd94d3... adas
         </div>
       </div>
 
@@ -71,6 +99,7 @@ export default {
     };
   },
   methods: {
+<<<<<<< HEAD
     toggleMobileMenu() {
       this.activeMobile = !this.activeMobile;
     },
@@ -80,6 +109,12 @@ export default {
       'cart',
     ]),
   },
+=======
+    showMobileMenu() {
+      this.activeMobile = !this.activeMobile;
+    },
+  },
+>>>>>>> 0fd94d3... adas
 };
 </script>
 

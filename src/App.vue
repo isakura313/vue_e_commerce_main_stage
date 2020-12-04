@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <Header v-bind:countOfProduct="cartItemCount"/>
-    <router-view></router-view>
+    <router-view :key="$route.fullPath"></router-view>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from './layouts/Header.vue';
+import Footer from './layouts/Footer.vue';
 
 export default {
   name: 'App',
   components: {
+    Footer,
     Header,
   },
   data() {
@@ -31,8 +34,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.main_wrap {
-  margin: 0 10em;
-}
+<style>
+
 </style>

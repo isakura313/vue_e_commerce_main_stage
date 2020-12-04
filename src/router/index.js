@@ -15,13 +15,18 @@ const routes = [
     component: Home,
   },
   {
+    path: '/product/:id',
+    name: 'Product',
+    component: Product,
+  },
+  {
     path: '/books',
     name: 'Books',
     component: Books,
   },
   {
     path: '/videocards',
-    name: 'video',
+    name: 'Video',
     component: Video,
   },
   {
@@ -29,11 +34,14 @@ const routes = [
     name: 'Cart',
     component: Cart,
   },
+<<<<<<< HEAD
   {
     path: '/product/:id',
     name: 'Product',
     component: Product,
   },
+=======
+>>>>>>> 0fd94d3... adas
 ];
 
 const router = new VueRouter({

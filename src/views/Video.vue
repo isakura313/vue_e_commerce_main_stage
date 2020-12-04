@@ -7,6 +7,7 @@
     </div>
     <div class="columns is-multiline main_wrap">
       <Card v-for='item in info'
+            :id = 'item.id'
             :newPrice = 'item.new_price'
             :key='item.id'
             :id = 'item.id'
@@ -24,6 +25,10 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+=======
+import axios from 'axios';
+>>>>>>> 0fd94d3... adas
 import Card from '../components/Card.vue';
 
 export default {
@@ -33,8 +38,13 @@ export default {
   },
   data() {
     return {
+<<<<<<< HEAD
       info: [],
       title: 'Отдел книг',
+=======
+      info: '',
+      title: 'Видеокарты по выгодным ценам',
+>>>>>>> 0fd94d3... adas
       cart: [],
     };
   },
@@ -48,10 +58,19 @@ export default {
       return this.cart.length;
     },
   },
+<<<<<<< HEAD
   async created() {
     const response = await fetch('/json/full.json');
     this.info = await response.json();
     this.info = this.info.video;
+=======
+  created() {
+    axios
+      .get('/json/full.json')
+      .then((response) => {
+        this.info = response.data.video;
+      });
+>>>>>>> 0fd94d3... adas
   },
 };
 </script>
